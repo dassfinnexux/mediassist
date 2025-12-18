@@ -1,109 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Clinic Voice Assistant</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Azure Speech SDK -->
-    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Clinic Voice Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Azure Speech SDK -->
+  <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
 </head>
+
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <h1>🏥 Medical Clinic Assistant</h1>
-            <p class="subtitle">Speak in Tamil, Telugu, or English</p>
-        </header>
+  <div class="container">
+    <header>
+      <h1>🏥 Medical Clinic Assistant</h1>
+      <p class="subtitle">Speak in Tamil, Telugu, or English</p>
+    </header>
 
-        <!-- Language Selection -->
-        <div class="language-selector">
-            <p>Select your language / உங்கள் மொழியைத் தேர்ந்தெடுக்கவும் / మీ భాషను ఎంచుకోండి</p>
-            <div class="lang-buttons">
-                <button class="lang-btn" data-lang="ta">
-                    <span class="lang-name">தமிழ்</span>
-                    <span class="lang-english">Tamil</span>
-                </button>
-                <button class="lang-btn" data-lang="te">
-                    <span class="lang-name">తెలుగు</span>
-                    <span class="lang-english">Telugu</span>
-                </button>
-                <button class="lang-btn active" data-lang="en">
-                    <span class="lang-name">English</span>
-                    <span class="lang-english">English</span>
-                </button>
-            </div>
-        </div>
+    <div class="language-selector">
+      <p>Select your language / உங்கள் மொழியைத் தேர்ந்தெடுக்கவும் / మీ భాషను ఎంచుకోండి</p>
+      <div class="lang-buttons">
+        <button class="lang-btn" data-lang="ta">
+          <span class="lang-name">தமிழ்</span>
+          <span class="lang-english">Tamil</span>
+        </button>
 
-        <!-- Status Display -->
-        <div class="status-display">
-            <div id="connectionStatus" class="status-indicator">
-                <span class="status-dot"></span>
-                <span class="status-text">Ready</span>
-            </div>
-        </div>
+        <button class="lang-btn" data-lang="te">
+          <span class="lang-name">తెలుగు</span>
+          <span class="lang-english">Telugu</span>
+        </button>
 
-        <!-- Microphone Button -->
-        <div class="mic-container">
-            <button id="micButton" class="mic-btn" aria-label="Press to speak">
-                <svg class="mic-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-                </svg>
-                <div class="pulse-ring"></div>
-            </button>
-            <p id="micStatus">Tap to speak or say "Hey Doctor"</p>
-        </div>
-
-        <!-- Transcript Area -->
-        <div class="transcript-container">
-            <div class="transcript-header">
-                <h3>💬 Conversation</h3>
-                <button id="clearBtn" class="clear-btn">Clear</button>
-            </div>
-            <div id="transcript" class="transcript">
-                <div class="welcome-message">
-                    <p>Welcome! Select your language and tap the microphone to start speaking.</p>
-                    <p>வரவேற்கிறோம்! உங்கள் மொழியைத் தேர்ந்தெடுத்து பேச மைக்ரோஃபோனைத் தட்டவும்.</p>
-                    <p>స్వాగతం! మీ భాషను ఎంచుకుని మాట్లాడటానికి మైక్రోఫోన్‌ను నొక్కండి.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Settings Panel (collapsible) -->
-        <details class="settings-panel">
-            <summary>⚙️ Settings</summary>
-            <div class="settings-content">
-                <div class="setting-item">
-                    <label for="voiceSelect">Voice:</label>
-                    <select id="voiceSelect">
-                        <option value="female">Female</option>
-                        <option value="male">Male</option>
-                    </select>
-                </div>
-                <div class="setting-item">
-                    <label for="wakeWordToggle">Wake Word ("Hey Doctor"):</label>
-                    <input type="checkbox" id="wakeWordToggle" checked>
-                </div>
-                <div class="setting-item">
-                    <label for="autoPlayToggle">Auto-play responses:</label>
-                    <input type="checkbox" id="autoPlayToggle" checked>
-                </div>
-            </div>
-        </details>
-
-        <!-- Footer -->
-        <footer>
-            <p>🔒 Your conversations are private and secure</p>
-        </footer>
+        <button class="lang-btn active" data-lang="en">
+          <span class="lang-name">English</span>
+          <span class="lang-english">English</span>
+        </button>
+      </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="config.js"></script>
-    <script src="translator.js"></script>
-    <script src="copilot-service.js"></script>
-    <script src="speech-service.js"></script>
-    <script src="wake-word.js"></script>
-    <script src="app.js"></script>
+    <div class="status-display">
+      <div id="connectionStatus" class="status-indicator">
+        <span class="status-dot"></span>
+        <span class="status-text">Ready</span>
+      </div>
+    </div>
+
+    <div class="mic-container">
+      <button id="micButton" class="mic-btn" aria-label="Press to speak">
+        <svg class="mic-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+          <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+        </svg>
+        <div class="pulse-ring"></div>
+      </button>
+      <p id="micStatus">Tap to speak or say "Hey Doctor"</p>
+    </div>
+
+    <div class="transcript-container">
+      <div class="transcript-header">
+        <h3>💬 Conversation</h3>
+        <button id="clearBtn" class="clear-btn">Clear</button>
+      </div>
+
+      <div id="transcript" class="transcript">
+        <div class="welcome-message">
+          <p>Welcome! Select your language and tap the microphone to start speaking.</p>
+          <p>வரவேற்கிறோம்! உங்கள் மொழியைத் தேர்ந்தெடுத்து பேச மைக்ரோஃபோனைத் தட்டவும்.</p>
+          <p>స్వాగతం! మీ భాషను ఎంచుకుని మాట్లాడటానికి మైక్రోఫోన్‌ను నొక్కండి.</p>
+        </div>
+      </div>
+    </div>
+
+    <details class="settings-panel">
+      <summary>⚙️ Settings</summary>
+      <div class="settings-content">
+        <div class="setting-item">
+          <label for="voiceSelect">Voice:</label>
+          <select id="voiceSelect">
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label for="wakeWordToggle">Wake Word ("Hey Doctor"):</label>
+          <input type="checkbox" id="wakeWordToggle" checked />
+        </div>
+
+        <div class="setting-item">
+          <label for="autoPlayToggle">Auto-play responses:</label>
+          <input type="checkbox" id="autoPlayToggle" checked />
+        </div>
+      </div>
+    </details>
+
+    <footer>
+      <p>🔒 Your conversations are private and secure</p>
+    </footer>
+  </div>
+
+  <!-- Scripts (order matters) -->
+  <script src="config.js"></script>
+  <script src="speech-service.js"></script>
+  <script src="translator.js"></script>
+  <script src="copilot-service.js"></script>
+  <script src="wake-word.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
